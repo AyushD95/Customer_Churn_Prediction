@@ -162,12 +162,11 @@ function Review() {
           <button 
             key={filter} 
             onClick={() => handleFilterClick(filter)}
+            className='btn btn-primary'
             style={{ margin: '5px' }}>
             {filter}
           </button>
         ))}
-
-        
 
         {chartData ? (
           <div>
