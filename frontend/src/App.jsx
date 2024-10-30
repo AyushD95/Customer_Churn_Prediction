@@ -9,7 +9,6 @@ import ContactUs from './components/ContactUs';
 import Logout from './components/Logout';
 import Error from './components/Error';
 import Prediction from './components/Prediction';
-import Multiple from './components/Mutilple';
 import Review from './components/Review';
 
 function App() {

@@ -14,8 +14,7 @@ matplotlib.use('Agg')  # Use a non-GUI backend for Matplotli
 
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:5174"}})  # Allow requests from your frontend
-
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/predict', methods=['POST'])
 def predict():

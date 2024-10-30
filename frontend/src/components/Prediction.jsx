@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Mutilple from './Mutilple';
-
 function Prediction() {
   const [prediction, setPrediction] = useState(null);
   const [predictionProb, setPredictionProb] = useState(null);
