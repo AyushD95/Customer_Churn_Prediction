@@ -185,12 +185,6 @@ function Prediction() {
       console.error('Error:', error);
     }
   };
-    
-
-
-  
-
-
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]); // Store the selected file in state
@@ -560,30 +554,26 @@ function Prediction() {
           )}
           {dataType === 'Multiple Data' && (
             <>
-              
-
-             <div className="container mt-3">
-              <h1 className="text-center text-primary fw-bold fs-3">Upload Your CSV File :</h1>
+            <div className="container">
+              <h1 className="text-center text-primary fw-bold fs-3 mb-4">Upload Your CSV File</h1>
               <div className="d-flex justify-content-center mt-2 mb-3">
-              <input type="file" onChange={handleFileChange} />
-             </div>
+                <input type="file" onChange={handleFileChange} />
+              </div>
 
-             <div className="col-md-12 text-center">
-             <button
-               type="button"
-               onClick={handleMultiplePredict} // Call singlePredict function on button click
-               className="btn btn-primary fw-bold"
-               style={{ borderRadius: '20px', padding: '10px 20px' }}
-              >
-                Predict
-               </button>
-               </div>
-                 
+              <div className="col-md-12 text-center">
+                <button
+                  type="button"
+                  onClick={handleMultiplePredict} // Call singlePredict function on button click
+                  className="btn btn-primary fw-bold"
+                  style={{ borderRadius: '20px', padding: '10px 20px' }}
+                  >
+                    Predict
+                </button>
+              </div>
+                  
 
                {error && <div className="alert alert-danger">{error}</div>}
-               </div>
-               
-
+            </div>
             </>
           )}
       </form>

@@ -188,9 +188,6 @@ def get_chart():
     final_dataframe= data.get('finaldf')
     
     df = pd.DataFrame(final_dataframe)
-   
-   
-    
 
     if(attribute=='Gender'):
     
@@ -268,11 +265,6 @@ def get_chart():
     plt.close();
     buf.seek(0);
     image_base64 = base64.b64encode(buf.read()).decode('utf-8');
-    
-    
-
-
-      
 
     return jsonify({'pie2': image_base64})
 

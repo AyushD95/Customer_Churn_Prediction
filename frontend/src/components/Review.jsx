@@ -53,18 +53,18 @@ function Review() {
 
   return (
     <div className="container">
-      <h2>Prediction Results</h2>
+      <h2 className='text-center text-primary fw-bold text-decoration-underline mt-4 mb-4'>Prediction Results</h2>
       <table className="table table-bordered">
         <thead>
-          <tr>
-            <th>Customer Index</th>
-            <th>Prediction</th>
-            <th>Probability</th>
+          <tr className='text-center fw-bold'>
+            <th className='bg-info'>Customer Index</th>
+            <th className='bg-info'>Prediction</th>
+            <th className='bg-info'>Probability</th>
           </tr>
         </thead>
         <tbody>
           {predictions.map((prediction, index) => (
-            <tr key={index}>
+            <tr key={index} className='text-center'>
               <td>{index + 1}</td>
               <td>{prediction === 1 ? 'Churned' : 'Not Churned'}</td>
               <td>{(prediction_probs[index] * 100).toFixed(2)}%</td>
@@ -72,8 +72,9 @@ function Review() {
           ))}
         </tbody>
       </table>
+      <hr />
 
-      <h2>Churn Distribution</h2>
+      <h2 className='text-primary fw-bold text-decoration-underline mt-4'>Churn Distribution:</h2>
       {pie && (
         <img
           src={`data:image/png;base64,${pie}`}
@@ -81,10 +82,11 @@ function Review() {
           style={{ width: '50%', marginTop: '20px' }}
         />
       )}
+      <hr />
 
       {graph && (
         <div>
-          <h2>Additional Analysis</h2>
+          <h2 className='text-primary fw-bold text-decoration-underline mt-4'>Additional Analysis:</h2>
           <img
             src={`data:image/png;base64,${graph}`}
             alt="Graph Analysis"
@@ -92,9 +94,11 @@ function Review() {
           />
         </div>
       )}
+      <hr />
 
       <div>
-        <h2>Churn Distribution Chart</h2>
+        <h2 className='text-primary fw-bold text-decoration-underline mt-4'>Churn Distribution Chart :</h2><br />
+        <h5 className='fw-bold'>For The Better Analysis:</h5>
         {Object.keys(filters).map((filter) => (
           <button 
             key={filter} 
@@ -108,11 +112,11 @@ function Review() {
 
         {chartData ? (
           <div>
-            <h3>Distribution for {selectedFilter}</h3>
+            <h3 className='text-primary fw-bold text-decoration-underline mt-4'>Distribution for {selectedFilter}</h3>
             <img src={`data:image/png;base64,${chartData}`} alt={`Churn Distribution for ${selectedFilter}`} />
           </div>
         ) : (
-          !selectedFilter && <p>Select a filter to view the chart.</p>
+          !selectedFilter && <p className='mb-5'>Select a filter to view the chart.</p>
         )}
       </div>
     </div>
