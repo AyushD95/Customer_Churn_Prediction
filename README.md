@@ -1,4 +1,3 @@
-Ayush
 Customer Churn Prediction: Customer churn prediction is the process of analyzing customer data to identify individuals or groups likely to discontinue their relationship with a company or service. Churn, often referred to as customer attrition, can significantly impact a business's revenue and growth.<br>
 <br>
 Importance<br>
