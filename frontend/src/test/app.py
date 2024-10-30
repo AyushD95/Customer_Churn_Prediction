@@ -53,7 +53,7 @@ def predict():
     input_df = pd.DataFrame([input_data])  # Wrap input_data in a list to create a DataFrame with one row
 
     # Load the pre-trained model
-    model_path = r'C:\Users\ayush\Desktop\Customer_Churn_Prediction\frontend\src\test\random_forest_model.joblib' 
+    model_path = r'C:\Users\Prathmesh\.vscode\Hackthon\Customer_Churn_Prediction\frontend\src\test\random_forest_model.joblib' 
     model = joblib.load(model_path)
 
     # Make predictions using numpy array
@@ -89,7 +89,7 @@ def multipredict():
     df = pd.read_csv(file)
     
     # Load the pre-trained model
-    model_path = r'C:\Users\ayush\Desktop\Customer_Churn_Prediction\frontend\src\test\random_forest_model.joblib'
+    model_path = r'C:\Users\Prathmesh\.vscode\Hackthon\Customer_Churn_Prediction\frontend\src\test\random_forest_model.joblib'
     model = joblib.load(model_path)
 
     df['TotalCharges'] = pd.to_numeric(df['TotalCharges'], errors='coerce')

@@ -37,7 +37,7 @@ function Review() {
     setSelectedFilter(filter); // Update selected filter
 
     try {
-      const response = await axios.post('http://localhost:5000/get-chart', { filter, value, finaldf });
+      const response = await axios.post('http://127.0.0.1:5000/get-chart', { filter, value, finaldf });
       setChartData(response.data.pie2); // Set the received chart data
     } catch (error) {
       console.error("Error fetching chart data:", error);

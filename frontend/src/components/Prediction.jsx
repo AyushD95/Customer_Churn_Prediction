@@ -161,7 +161,7 @@ function Prediction() {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/predict', {
+      const response = await fetch('http://127.0.0.1:5000/predict', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -206,7 +206,7 @@ function Prediction() {
     formData.append('file', file); // Append the file to the form data
 
     try {
-      const response = await fetch('http://localhost:5000/multi-predict', {
+      const response = await fetch('http://127.0.0.1:5000/multi-predict', {
         method: 'POST',
         body: formData, // Send the form data containing the file
       });
@@ -562,10 +562,10 @@ function Prediction() {
             <>
               
 
-             <div className="container mt-5">
-             
-             <div className="d-flex justify-content-center mb-3">
-             <input type="file" onChange={handleFileChange} />
+             <div className="container mt-3">
+              <h1 className="text-center text-primary fw-bold fs-3">Upload Your CSV File :</h1>
+              <div className="d-flex justify-content-center mt-2 mb-3">
+              <input type="file" onChange={handleFileChange} />
              </div>
 
              <div className="col-md-12 text-center">
