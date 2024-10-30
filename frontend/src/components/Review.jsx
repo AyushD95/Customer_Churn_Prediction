@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 function Review() {
   // Access the state passed from the previous page
@@ -51,10 +53,67 @@ function Review() {
     setChartData(null);
   };
 
+
+
+
+  const handleDownload = async () => {
+    try {
+      const response = await axios.post('http://127.0.0.1:5000/download-csv', { finaldf }, {
+        responseType: 'blob', // Specify blob to handle file download
+      });
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'filtered_data.csv');
+      document.body.appendChild(link);
+      link.click();
+    } catch (error) {
+      console.error("Error downloading CSV:", error);
+    }
+  };
+
+
+
+
+
+
+  const handleDownloadPDF = async () => {
+    const doc = new jsPDF();
+
+    // Capture the table
+    const table = document.getElementById('prediction-table');
+    const tableCanvas = await html2canvas(table);
+    const tableImgData = tableCanvas.toDataURL('image/png');
+    doc.text('Prediction Results', 10, 10);
+    doc.addImage(tableImgData, 'PNG', 10, 20, 190, 0);
+
+    // Capture the pie chart
+    if (pie) {
+      const pieImg = new Image();
+      pieImg.src = `data:image/png;base64,${pie}`;
+      doc.addPage();
+      doc.text('Churn Distribution', 10, 10);
+      doc.addImage(pieImg, 'PNG', 10, 20, 150, 0);
+    }
+
+    // Capture the additional analysis chart
+    if (graph) {
+      const graphImg = new Image();
+      graphImg.src = `data:image/png;base64,${graph}`;
+      doc.addPage();
+      doc.text('Additional Analysis', 10, 10);
+      doc.addImage(graphImg, 'PNG', 10, 20, 150, 0);
+    }
+
+    doc.save('report.pdf');
+  };
+
+
+
   return (
     <div className="container">
-      <h2 className='text-center text-primary fw-bold text-decoration-underline mt-4 mb-4'>Prediction Results</h2>
-      <table className="table table-bordered">
+      <h2 className='text-center text-primary fw-bold text-decoration-underline mt-4 mb-4' >Prediction Results</h2>
+      <table className="table table-bordered"  id="prediction-table">
         <thead>
           <tr className='text-center fw-bold'>
             <th className='bg-info'>Customer Index</th>
@@ -119,6 +178,14 @@ function Review() {
           !selectedFilter && <p className='mb-5'>Select a filter to view the chart.</p>
         )}
       </div>
+
+      <button onClick={handleDownload} className="btn btn-primary mt-4">
+        Download Filtered Data
+      </button>
+
+
+      <button onClick={handleDownloadPDF} className="btn btn-primary mt-4">Download PDF</button>
+
     </div>
   );
 }

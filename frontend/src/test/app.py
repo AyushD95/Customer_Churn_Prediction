@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_file
 from flask_cors import CORS  # Import CORS
 import numpy as np
 import pandas as pd
@@ -9,11 +9,15 @@ import io
 import base64
 from sklearn.preprocessing import LabelEncoder
 matplotlib.use('Agg')  # Use a non-GUI backend for Matplotli
+import tempfile
+import os
 
 
 
 
 app = Flask(__name__)
+temp_files = {}
+
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 @app.route('/predict', methods=['POST'])
@@ -266,7 +270,26 @@ def get_chart():
     buf.seek(0);
     image_base64 = base64.b64encode(buf.read()).decode('utf-8');
 
-    return jsonify({'pie2': image_base64})
+
+    return jsonify({'pie2': image_base64});
+
+
+
+@app.route('/download-csv', methods=['POST'])
+def download_csv():
+    data = request.json
+    final_dataframe = data.get('finaldf')
+    df = pd.DataFrame(final_dataframe)
+    
+    # Filtered Data
+    df_filtered = df[df['Prediction'] == 1]  # For example, keeping only "Churned" predictions
+    
+    # Save to a temporary CSV file
+    temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.csv')
+    df_filtered.to_csv(temp_file.name, index=False)
+    
+    return send_file(temp_file.name, as_attachment=True, download_name='filtered_data.csv')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
