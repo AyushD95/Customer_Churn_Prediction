@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import io
 import base64
 from sklearn.preprocessing import LabelEncoder
-matplotlib.use('Agg')  # Use a non-GUI backend for Matplotlib
+matplotlib.use('Agg')  # Use a non-GUI backend for Matplotli
 
 
 
