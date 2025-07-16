@@ -208,7 +208,7 @@ function Prediction() {
     };
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/predict", {
+      const response = await fetch("https://customer-churn-prediction-t24j.onrender.com/predict", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -247,7 +247,7 @@ function Prediction() {
     formData.append("file", file); // Append the file to the form data
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/multi-predict", {
+      const response = await fetch("https://customer-churn-prediction-t24j.onrender.com/multi-predict", {
         method: "POST",
         body: formData, // Send the form data containing the file
       });
@@ -296,7 +296,7 @@ const handleSampleDatasetPredict = async () => {
     formData.append("file", sampleFile);
 
     /* 4️⃣ Call your Flask endpoint. */
-    const response = await fetch("http://127.0.0.1:5000/multi-predict", {
+    const response = await fetch("https://customer-churn-prediction-t24j.onrender.com/multi-predict", {
       method: "POST",
       body: formData,
     });
