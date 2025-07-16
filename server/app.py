@@ -80,7 +80,9 @@ def predict():
 
     return jsonify(response)
 
-
+@app.route('/hello', methods=['GET'])
+def hello():
+    return jsonify({"message": "Hello"})
 
 @app.route('/multi-predict', methods=['POST'])
 def multipredict():
