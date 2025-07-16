@@ -178,9 +178,7 @@ function Review() {
         )}
       </div>
 
-      <button onClick={handleDownload} className="btn btn-primary mt-4">
-        Download Filtered Data
-      </button>
+ 
 
 
       <button onClick={handleDownloadPDF} className="btn btn-primary mt-4">Download PDF</button>

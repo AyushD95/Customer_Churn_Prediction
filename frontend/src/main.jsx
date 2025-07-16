@@ -4,13 +4,11 @@ import App from './App.jsx';
 import './index.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import { AuthProvider } from './store/auth.jsx'
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <AuthProvider>
     <React.StrictMode>
       <App />
       <ToastContainer
@@ -28,5 +26,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           bodyClassName="toastBody"
         />
     </React.StrictMode>
-  </AuthProvider>
 )

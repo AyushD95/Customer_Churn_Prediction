@@ -32,7 +32,7 @@ function Prediction() {
     TotalCharges: 0,
   });
 
-  const [dataType, setDataType] = useState('Single Data'); // New state to track data type
+  const [dataType, setDataType] = useState('Multiple Data'); // New state to track data type
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -226,13 +226,10 @@ function Prediction() {
     <div className="container mt-5">
       <h1 className="text-center text-primary fw-bold">Churn Prediction</h1>
       <hr />
-      <div className="d-flex justify-content-end mb-3">
-        <select value={dataType} onChange={handleDataTypeChange} className="form-select w-auto">
-          <option value="Single Data">Single Data</option>
-          <option value="Multiple Data">Multiple Data</option>
-        </select>
+      <div className="d-flex justify-content-end mb-5  ">
+     
       </div>
-      <form className="prediction-form row mb-5 border p-4 rounded shadow bg-light">
+      <form className="prediction-form row mb-5 border p-5 rounded shadow bg-light">
           {dataType === 'Single Data' && (
             <>
             {/* Single Data Form */}
@@ -554,7 +551,7 @@ function Prediction() {
           )}
           {dataType === 'Multiple Data' && (
             <>
-            <div className="container">
+            <div className="container mb-5 mt-5">
               <h1 className="text-center text-primary fw-bold fs-3 mb-4">Upload Your CSV File</h1>
               <div className="d-flex justify-content-center mt-2 mb-3">
                 <input type="file" onChange={handleFileChange} />

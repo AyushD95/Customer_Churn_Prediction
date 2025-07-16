@@ -10,7 +10,7 @@ import base64
 from sklearn.preprocessing import LabelEncoder
 matplotlib.use('Agg')  # Use a non-GUI backend for Matplotli
 import tempfile
-import os
+
 
 
 
